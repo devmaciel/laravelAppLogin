@@ -2,6 +2,32 @@
 
 @section('conteudo')
 
-    <h1>Teste</h1>
+<div class="formulario">
+    <div class="row justify-content-md-center">
+        <img class="imagem-lock" src="{{asset('images/lock.png')}}" alt="">
+    </div>
+
+    <div class="row justify-content-md-center">
+        <div class="col-md-6 col-md-offset-6">
+            <form>
+
+                {{-- usuário --}}
+                <div class="form-group">
+                  <label for="id_usuario">Usuário:</label>
+                  <input required name="text_usuario" type="text" class="form-control" id="id_usuario" aria-describedby="Usuario" placeholder="Usuario">
+                </div>
+
+                {{-- senha --}}
+                <div class="form-group">
+                  <label for="id_senha">Senha:</label>
+                  <input required name="text_senha" type="password" class="form-control" id="id_senha" placeholder="Senha">
+                </div>
+
+                {{-- submit --}}
+                <button type="submit" class="btn btn-primary">Login</button>
+              </form>
+        </div>
+    </div>
+</div>
 
 @endsection
