@@ -10,20 +10,15 @@
     <div class="row justify-content-md-center">
         <div class="col-md-6 col-md-offset-6">
         <br>
-            {{-- erros (validação) --}}
-            @if (count($errors) != 0)
-                @foreach ($errors->all() as $erro)
-                    <p class="alert alert-danger">{{ $erro }}</p>
-                @endforeach
-            @endif
 
+        {{-- erros (validação) --}}
+        @include('inc.erros')
 
         <form method="POST" action="{{ route('login') }}">
                 @csrf
 
                 {{-- usuário --}}
                 <div class="form-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                   <label for="id_usuario">Usuário:</label>
                   <input  name="text_usuario" type="text" class="form-control" id="id_usuario" aria-describedby="Usuario" placeholder="Usuario">
                 </div>

@@ -17,7 +17,7 @@ class usuariosController extends Controller
     {
         //verificação dos inputs
         $this->validate($request, [
-            'text_usuario' => 'required',
+            'text_usuario' => 'bail|required|min:5',
             'text_senha' => 'required|min:3'
         ]);
 
