@@ -2,17 +2,29 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-body,html{height: 100%; background-color: rgb(235, 235, 235);}
+body,html{/*height: 100%;*/ background-color: rgb(245, 245, 245);}
 
 .container > .formulario{
-    margin-top: 10px;
-    background-color: rgb(245, 245, 245);
+    margin-top: 80px;
+    /* background-color: red; */
     padding: 40px;
+    /* position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%); */
 }
 
 .imagem-lock{
     width: 50px;
     height: 50px;
+}
+
+@media screen and (max-width: 768px){
+    .imagem-lock{
+        margin-left: 42%;
+        text-align: center;
+    }
 }

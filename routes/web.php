@@ -17,5 +17,5 @@ use Illuminate\Support\Facades\Route;
 //     return view('usuarios_login');
 // });
 
-Route::get('usuarios_login', 'usuariosController@apresentarUsuarioLogin');
+Route::get('/', 'usuariosController@apresentarUsuarioLogin');
 Route::post('usuarios_fazer_login', 'usuariosController@fazerLogin')->name('login');
