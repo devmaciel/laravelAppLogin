@@ -31,8 +31,13 @@
 
                 {{-- submit --}}
                 <button type="submit" class="btn btn-primary">Login</button>
-              </form>
+
+                {{-- criar nova conta --}}
+                <a style="margin-left: 50px;" href="{{ route('criar_conta') }}">Criar nova conta</a>
+            </form>
         </div>
+
+
     </div>
 </div>
 

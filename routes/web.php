@@ -19,3 +19,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'usuariosController@apresentarUsuarioLogin');
 Route::post('usuarios_fazer_login', 'usuariosController@fazerLogin')->name('login');
+
+Route::get('inserir_usuario', 'usuariosController@inserirUsuario');
+
+
+Route::get('criar_conta', function(){
+    return view('criar_conta');
+})->name('criar_conta');
