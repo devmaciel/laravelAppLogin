@@ -11,4 +11,18 @@ class usuariosController extends Controller
     {
         return view('usuarios_login');
     }
+
+    //fazer login
+    public function fazerLogin(Request $request)
+    {
+        //verificação dos inputs
+        $this->validate($request, [
+            'text_usuario' => 'required',
+            'text_senha' => 'required|min:3'
+        ]);
+
+        //consultar bd
+
+        return 'validado!';
+    }
 }

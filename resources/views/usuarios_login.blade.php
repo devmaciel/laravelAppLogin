@@ -9,18 +9,28 @@
 
     <div class="row justify-content-md-center">
         <div class="col-md-6 col-md-offset-6">
-            <form>
+
+            {{-- erros (validação) --}}
+            @if (count($errors) != 0)
+                @foreach ($errors->all() as $erro)
+                    <p class="alert alert-danger">{{ $erro }}</p>
+                @endforeach
+            @endif
+
+
+        <form method="POST" action="{{ route('login') }}">
+                @csrf
 
                 {{-- usuário --}}
                 <div class="form-group">
                   <label for="id_usuario">Usuário:</label>
-                  <input required name="text_usuario" type="text" class="form-control" id="id_usuario" aria-describedby="Usuario" placeholder="Usuario">
+                  <input  name="text_usuario" type="text" class="form-control" id="id_usuario" aria-describedby="Usuario" placeholder="Usuario">
                 </div>
 
                 {{-- senha --}}
                 <div class="form-group">
                   <label for="id_senha">Senha:</label>
-                  <input required name="text_senha" type="password" class="form-control" id="id_senha" placeholder="Senha">
+                  <input  name="text_senha" type="password" class="form-control" id="id_senha" placeholder="Senha">
                 </div>
 
                 {{-- submit --}}
