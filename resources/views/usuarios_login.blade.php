@@ -19,13 +19,13 @@
 
                 {{-- usuário --}}
                 <div class="form-group">
-                  <label for="id_usuario">Usuário:</label>
+                  <label for="id_usuario"><b>Usuário:</b></label>
                   <input  name="text_usuario" type="text" class="form-control" id="id_usuario" aria-describedby="Usuario" placeholder="Usuario">
                 </div>
 
                 {{-- senha --}}
                 <div class="form-group">
-                  <label for="id_senha">Senha:</label>
+                  <label for="id_senha"><b>Senha:</b></label>
                   <input  name="text_senha" type="password" class="form-control" id="id_senha" placeholder="Senha">
                 </div>
 
