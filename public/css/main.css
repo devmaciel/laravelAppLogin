@@ -1,4 +1,4 @@
-*{
+/* *{
     margin: 0 !important;
     padding: 0 !important;
     box-sizing: border-box !important;
@@ -13,7 +13,7 @@ html,body{
     max-width: 1280px !important;
     padding: 0 2% !important;
     margin: 0 auto !important;
-    /* background-color: red; */
+
 }
 
 /* div.img-responsive{
@@ -21,5 +21,11 @@ html,body{
     height: 120px;
     background-image: url('../images/logo.png');
     background-size:cover;
-} */
+}
+*/
 
+.img-logo{
+    margin: 30px auto;
+}
+
+.margin-top-20{margin-top: 20px;}
