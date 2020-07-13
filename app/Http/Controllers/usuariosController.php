@@ -43,9 +43,14 @@ class usuariosController extends Controller
         return view('usuario_form_recuperar_senha');
     }
 
-    public function executarRecuperarSenha()
+    public function executarRecuperarSenha(Request $request)
     {
+        //Validação
+        $this->validate($request, [
+            'text_email' => 'required|email'
+        ]);
 
+        return 'OK';
     }
 
 

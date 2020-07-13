@@ -31,6 +31,9 @@ Route::post('/efetuar-login', 'usuariosController@executarLogin')
 Route::get('/recuperar-senha', 'usuariosController@formRecuperarSenha')
  ->name('usuario_form_recuperar_senha');
 
+ Route::post('/efetuar-recuperar-senha', 'usuariosController@executarRecuperarSenha')
+ ->name('usuario_form_efetuar_recuperar_senha');
+
 
 //---------------------------------------------------------
 //usuário - nova conta
