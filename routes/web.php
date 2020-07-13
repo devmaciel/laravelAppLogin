@@ -16,13 +16,28 @@ use Illuminate\Support\Facades\Route;
 //Default
 Route::get('/', 'usuariosController@index');
 
+
+//---------------------------------------------------------
 //usuário - login
+Route::get('/login', 'usuariosController@formLogin')
+ ->name('usuario_form_login');
+
+Route::post('/efetuar-login', 'usuariosController@executarLogin')
+->name('usuario_form_executar-login');
 
 
+//---------------------------------------------------------
 //usuário - recuperar senha
 Route::get('/recuperar-senha', 'usuariosController@formRecuperarSenha')
  ->name('usuario_form_recuperar_senha');
 
+
+//---------------------------------------------------------
 //usuário - nova conta
 Route::get('/nova-conta', 'usuariosController@formCriarNovaConta')
  ->name('usuario_criar_nova_conta');
+
+ Route::post('/efetuar-nova-conta', 'usuariosController@executarCriacaoDeNovaConta')
+ ->name('usuario_executar_criar_nova_conta');
+
+
