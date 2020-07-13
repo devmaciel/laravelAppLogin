@@ -13,6 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('usuario_form_criar_conta');
-});
+//Default
+Route::get('/', 'usuariosController@index');
+
+//usuário - login
+
+
+//usuário - recuperar senha
+Route::get('/recuperar-senha', 'usuariosController@formRecuperarSenha')
+ ->name('usuario_form_recuperar_senha');
+
+//usuário - nova conta
+Route::get('/nova-conta', 'usuariosController@formCriarNovaConta')
+ ->name('usuario_criar_nova_conta');

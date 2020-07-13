@@ -49,7 +49,7 @@
 
                 {{-- voltar ao inicio --}}
                 <div class="text-center margin-top-20">
-                    <a href="/">Voltar</a>
+                    <a href="{{ asset('/') }}">Voltar</a>
                 </div>
 
             </form>
