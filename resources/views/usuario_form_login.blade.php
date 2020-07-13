@@ -1,9 +1,14 @@
 @extends('layouts.app')
 
+{{-- FORMULÁRIO DE LOGIN --}}
+
 @section('conteudo')
 
     <div class="row">
         <div class="col-md-4 col-md-offset-4    col-sm-8 col-sm-offset-2    col-xs-12">
+
+            {{-- ERROS/VALIDAÇÃO --}}
+
 
             <form method="POST" action="">
                 @csrf
@@ -16,7 +21,7 @@
 
                 {{-- senha --}}
                 <div class="form-group">
-                    <label for="id_text_senha">Usuário:</label>
+                    <label for="id_text_senha">Senha:</label>
                     <input type="password" class="form-control" id="id_text_senha" name="text_senha" placeholder="Senha">
                 </div>
 
