@@ -7,8 +7,9 @@
     <div class="row">
         <div class="col-md-4 col-md-offset-4    col-sm-8 col-sm-offset-2    col-xs-12">
 
-            {{-- Validação de Erros --}}
+            {{-- Validação de Erros/Sucesso --}}
             @include('inc.erros')
+            @include('inc.sucesso')
 
             <form method="POST" action="{{ route('usuario_executar_criar_nova_conta') }}">
                 @csrf

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use App\usuarios;
 
 class usuariosController extends Controller
 {
@@ -67,7 +69,10 @@ class usuariosController extends Controller
     {
         //executar os procedimentos e verificações para criação de uma nova conta
 
-        //Validação
+
+        //==================================================
+        // VALIDAÇÃO
+        //==================================================
         $this->validate($request, [
             'text_usuario' => 'required|between:3,30|alpha_num',
             'text_senha' => 'required|between:6,50',
@@ -75,8 +80,44 @@ class usuariosController extends Controller
             'text_email' => 'required|email',
             'check_termos_condicoes' => 'accepted'
         ]);
+        // return 'OK';
 
-        return 'OK';
+
+        //==================================================
+        // VERIFICAÇÃO
+        //==================================================
+        $dados = usuarios::where('usuario', '=', $request->text_usuario)
+                ->orWhere('email', '=', $request->text_email)
+                ->get();
+
+        /* buscar a partir de array/objeto
+        -----------------
+        ->get()->frist()
+            if(count($dados))
+
+        *buscar a partir de collection
+        ---------------------------
+        ->get()
+            if($dados->count())
+        */
+
+        if($dados->count() > 0){
+            $erros_bd = ['Já existe um usuário com o mesmo nome ou com o mesmo email.'];
+            return view('usuario_form_criar_conta', compact('erros_bd'));
+        }
+
+        //==================================================
+        //inserir novo usuário na base de dados
+        $novo = new usuarios;
+        $novo->usuario = $request->text_usuario;
+        $novo->senha = Hash::make($request->text_senha);
+        $novo->email = $request->text_email;
+        $novo->save();
+
+        $mensagem_sucesso = ['Conta criada com sucesso!'];
+
+        return view('usuario_form_criar_conta', compact('mensagem_sucesso'));
+        // return redirect('/');
 
     }
 }
