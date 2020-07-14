@@ -5,13 +5,20 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\usuarios;
+use Session;
 
 class usuariosController extends Controller
 {
     //===============================================
     public function index()
     {
-        return $this->formLogin();
+        //Sessão Inativa/Ativa
+        if(!Session::has('login'))
+            return $this->formLogin();
+        else
+            return view('aplicacao');
+
+        //
     }
 
 
@@ -53,6 +60,14 @@ class usuariosController extends Controller
             $erros_bd = ['A senha está incorreta.'];
             return view('usuario_form_login', compact('erros_bd'));
         }
+
+        //session
+        // Session::put('chave', 'validado');
+        // Session::put('usuario',$usuario->usuario);
+        Session::put('login', 'sim');
+        Session::put('usuario', $usuario->usuario);
+
+        return redirect('/');
     }
 
     //===============================================

@@ -44,3 +44,8 @@ Route::get('/nova-conta', 'usuariosController@formCriarNovaConta')
  ->name('usuario_executar_criar_nova_conta');
 
 
+ //---------------------------------------------------------
+//página depois de logado
+Route::get('/aplicacao_index', 'aplicacaoController@apresentarPaginaInicial');
+
+
