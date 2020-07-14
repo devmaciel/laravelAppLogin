@@ -26,14 +26,33 @@ class usuariosController extends Controller
 
     public function executarLogin(Request $request)
     {
-        //Validação
+        //==================================================
+        // VALIDAÇÃO
+        //==================================================
         $this->validate($request, [
             'text_usuario' => 'required',
             'text_senha' => 'required',
         ]);
+        // return 'OK';
 
-        return 'OK';
 
+        //==================================================
+        // VERIFICAÇÃO
+        //==================================================
+        $usuario = usuarios::where('usuario', $request->text_usuario)
+                ->first();
+
+        if(count($usuario) == 0){
+            $erros_bd = ['Essa conta de usuário não existe.'];
+            return view('usuario_form_login', compact('erros_bd'));
+        }
+
+        //não é recomendado, porque diz que usuário existe
+        //verifica se a senha bate com a do banco de dados
+        if(!Hash::check($request->text_senha, $usuario->senha)){
+            $erros_bd = ['A senha está incorreta.'];
+            return view('usuario_form_login', compact('erros_bd'));
+        }
     }
 
     //===============================================
@@ -47,7 +66,9 @@ class usuariosController extends Controller
 
     public function executarRecuperarSenha(Request $request)
     {
-        //Validação
+        //==================================================
+        // VALIDAÇÃO
+        //==================================================
         $this->validate($request, [
             'text_email' => 'required|email'
         ]);
