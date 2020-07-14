@@ -46,10 +46,10 @@ class usuariosController extends Controller
         //==================================================
         // VERIFICAÇÃO
         //==================================================
-        $usuario = usuarios::where('usuario', $request->text_usuario)
-                ->first();
+        $usuario = usuarios::where('usuario', $request->text_usuario)->first();
+        // dd($usuario);
 
-        if(count($usuario) == 0){
+        if($usuario->count() == 0){
             $erros_bd = ['Essa conta de usuário não existe.'];
             return view('usuario_form_login', compact('erros_bd'));
         }
@@ -67,6 +67,13 @@ class usuariosController extends Controller
         Session::put('login', 'sim');
         Session::put('usuario', $usuario->usuario);
 
+        return redirect('/');
+    }
+
+    public function logout()
+    {
+        //destruir sessão e redirect
+        Session::flush();
         return redirect('/');
     }
 

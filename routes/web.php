@@ -27,6 +27,12 @@ Route::post('/efetuar-login', 'usuariosController@executarLogin')
 
 
 //---------------------------------------------------------
+//usuário - logout
+Route::get('usuario_logout', 'usuariosController@logout')
+    ->name('logout');
+
+
+//---------------------------------------------------------
 //usuário - recuperar senha
 Route::get('/recuperar-senha', 'usuariosController@formRecuperarSenha')
  ->name('usuario_form_recuperar_senha');
@@ -44,8 +50,9 @@ Route::get('/nova-conta', 'usuariosController@formCriarNovaConta')
  ->name('usuario_executar_criar_nova_conta');
 
 
- //---------------------------------------------------------
+//---------------------------------------------------------
 //página depois de logado
 Route::get('/aplicacao_index', 'aplicacaoController@apresentarPaginaInicial');
+
 
 
