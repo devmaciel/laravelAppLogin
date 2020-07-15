@@ -107,7 +107,16 @@ class usuariosController extends Controller
             return view('usuario_form_recuperar_senha', compact('erros_bd'));
         }
 
+        //atualizar nova senha
+        $usuario = $usuario->first();
+
+        //senha aleatória
         $nova_senha = minhaclasse::criarCodigo();
+        $usuario->senha = Hash::make($nova_senha);
+        $usuario->save();
+
+
+
         return $nova_senha;
 
     }
