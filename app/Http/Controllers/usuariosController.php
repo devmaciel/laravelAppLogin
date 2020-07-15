@@ -8,6 +8,10 @@ use App\usuarios;
 use Session;
 use App\classes\MinhaClasse;
 
+//email
+use Illuminate\Support\Facades\Mail;
+use App\Mail\emailRecuperarSenha;
+
 class usuariosController extends Controller
 {
     //===============================================
@@ -110,17 +114,27 @@ class usuariosController extends Controller
         //atualizar nova senha
         $usuario = $usuario->first();
 
-        //senha aleatória
+        //senha aleatória salva no bd
         $nova_senha = minhaclasse::criarCodigo();
         $usuario->senha = Hash::make($nova_senha);
         $usuario->save();
 
+        //enviar email
+        Mail::to($usuario->email)->send(new emailRecuperarSenha($nova_senha));
 
+        // return 'OK';
+        // return $nova_senha;
 
-        return $nova_senha;
+        // return redirect('/usuario_email_enviado');
+        return $this->emailEnviado();
 
     }
 
+    //Email Enviado
+    public function emailEnviado()
+    {
+        return view('usuario_email_enviado');
+    }
 
     //===============================================
     // CRIAÇÃO DE NOVA CONTA

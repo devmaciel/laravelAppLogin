@@ -14,7 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 //Default
-Route::get('/', 'usuariosController@index');
+Route::get('/', 'usuariosController@index')
+->name('home');
 
 
 //---------------------------------------------------------
@@ -39,6 +40,9 @@ Route::get('/recuperar-senha', 'usuariosController@formRecuperarSenha')
 
  Route::post('/efetuar-recuperar-senha', 'usuariosController@executarRecuperarSenha')
  ->name('usuario_form_efetuar_recuperar_senha');
+
+ Route::post('/usuario_email_enviado', 'usuariosController@emailEnviado')
+ ->name('email-enviado');
 
 
 //---------------------------------------------------------
