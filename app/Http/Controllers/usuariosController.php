@@ -94,8 +94,18 @@ class usuariosController extends Controller
         $this->validate($request, [
             'text_email' => 'required|email'
         ]);
+        // return 'OK';
 
-        return 'OK';
+
+        //==================================================
+        // VERIFICAÇÃO
+        //==================================================
+        $usuario = usuarios::where('email', $request->text_email)->get();
+        if($usuario->count() == 0){
+            $erros_bd = ['O email não está associado a nenhuma conta de usuário.'];
+            return view('usuario_form_recuperar_senha', compact('erros_bd'));
+        }
+
     }
 
 
