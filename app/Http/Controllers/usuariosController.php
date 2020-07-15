@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\usuarios;
 use Session;
+use App\classes\MinhaClasse;
 
 class usuariosController extends Controller
 {
@@ -105,6 +106,9 @@ class usuariosController extends Controller
             $erros_bd = ['O email não está associado a nenhuma conta de usuário.'];
             return view('usuario_form_recuperar_senha', compact('erros_bd'));
         }
+
+        $nova_senha = minhaclasse::criarCodigo();
+        return $nova_senha;
 
     }
 
